@@ -3,12 +3,11 @@ Manipulate[
       FillingStyle -> {Opacity[1], Thickness[0.008], Orange}, 
       Epilog -> {Red, PointSize[Medium], Point[#]}, 
       PlotRange -> {{-3, 3}, {-0.02, 0.04}}] &@(Transpose[{(
-         Range[n, 6 n] - n Mean@Range[1, 6])/(
-         StandardDeviation[Range[1, 6]] Sqrt[n]), 
+         Range[n, 6 n] - n mean)/(sd Sqrt[n]), 
          Table[Total[#[[1 ;; i]]], {i, 1, 5 n + 1}] - 
           Table[CDF[NormalDistribution[], x], {x, (
-            Range[n, 6 n] - n Mean@Range[1, 6])/(
-            StandardDeviation[Range[1, 6]] Sqrt[n])}] }] &@
+            Range[n, 6 n] - n mean)/(sd Sqrt[n])}] }] &@
       CoefficientList[
        ((1 + x + x^2 + x^3 + x^4 + x^5)/6)^n, x])}, 
-  LabelStyle -> { FontFamily -> "Times New Roman"}], {n, 1, 100, 1}]
+  LabelStyle -> { FontFamily -> "Times New Roman"}], {n, {25, 50, 
+   100}}]
