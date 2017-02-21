@@ -1,10 +1,12 @@
 Manipulate[
- Show[{ListPlot[#, PlotRange -> {{-3, 3}, {0, 0.41}}, Filling -> Axis,
-       FillingStyle -> {Opacity[1], Thickness[0.008], Orange}, 
+ Show[{ListPlot[#, PlotRange -> {{-3.5, 3.5}, {0, 1}}, 
+      Filling -> Axis, 
+      FillingStyle -> {Opacity[1], Thickness[0.008], Orange}, 
       Epilog -> {Red, PointSize[Medium], 
         Point[#]}] &@(Transpose[{(Range[n, 6 n] - n mean)/(
-         sd Sqrt[n]), # }] &@CoefficientList[
+         sd Sqrt[n]), Table[Total[#[[1 ;; i]]], {i, 1, 5 n + 1}] }] &@
+      CoefficientList[
        ((1 + x + x^2 + x^3 + x^4 + x^5)/6)^n, x]), 
-   Plot[PDF[NormalDistribution[], x], {x, -3, 3}, 
+   Plot[CDF[NormalDistribution[], x], {x, -3.5, 3.5}, 
     PlotStyle -> {Thickness[0.008], Blue}]}, 
-  LabelStyle -> { FontFamily -> "Times New Roman"}], {n, 1, 100, 1}]
+  LabelStyle -> { FontFamily -> "Times New Roman"}], {n, 50, 100, 1}]
