@@ -7,9 +7,7 @@ Manipulate[
     Transpose[{#[[All, 1]], #[[All, 2]]/10^k}] &[
      Sort@Tally[Total /@ RandomInteger[{1, 6}, {10^k, n}]]], 
     PlotStyle -> {Green, Thickness[0.005]}], 
-   Plot[PDF[
-     NormalDistribution[n Mean[Range[6]], 
-      Sqrt[n] StandardDeviation[Range[6]]], x], {x, n, 6 n}, 
+   Plot[PDF[NormalDistribution[n mean, Sqrt[n] sd], x], {x, n, 6 n}, 
     PlotRange -> All, PlotStyle -> {Thickness[0.002], Blue}]}, 
   LabelStyle -> { FontFamily -> "Times New Roman"}], {n, 30, 70, 
   1}, {k, 4, 7, 1}]
